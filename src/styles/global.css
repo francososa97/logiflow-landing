@@ -1,0 +1,102 @@
+/* ---------------------------------------------------------------------------
+   Tipografía — Space Grotesk (display) + Manrope (texto) + JetBrains Mono
+   (datos: precios, cupos de choferes, coordenadas)
+--------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Tokens — "mesa de despacho": tinta nocturna + verde de ruta abierta
+--------------------------------------------------------------------------- */
+:root {
+  --ink: #10151d;
+  --ink-raised: #171e29;
+  --ink-line: rgba(178, 199, 196, 0.14);
+  --ink-line-strong: rgba(178, 199, 196, 0.26);
+  --ink-text: #eaefe9;
+  --ink-muted: #93a19c;
+
+  --paper: #eef0e9;
+  --paper-raised: #e2e6da;
+  --paper-line: rgba(20, 32, 26, 0.12);
+  --paper-text: #16201a;
+  --paper-muted: #5b6961;
+
+  --signal: #0fb88c;
+  --signal-strong: #4edbb5;
+  --signal-soft: rgba(15, 184, 140, 0.14);
+
+  --amber: #e8a33d;
+  --amber-strong: #f2c06b;
+  --amber-soft: rgba(232, 163, 61, 0.16);
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  --shadow-md: 0 16px 40px rgba(4, 8, 6, 0.35);
+  --shadow-lg: 0 30px 80px rgba(4, 8, 6, 0.45);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-raised: var(--ink-raised);
+  --color-ink-text: var(--ink-text);
+  --color-ink-muted: var(--ink-muted);
+
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-text: var(--paper-text);
+  --color-paper-muted: var(--paper-muted);
+
+  --color-signal: var(--signal);
+  --color-signal-strong: var(--signal-strong);
+  --color-amber: var(--amber);
+  --color-amber-strong: var(--amber-strong);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--paper-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}

@@ -1,0 +1,32 @@
+---
+---
+
+<section class="bg-paper pb-16 sm:pb-20">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <!--
+      TODO(video demo): cuando el video esté grabado, reemplazar este placeholder
+      por un <video> o embed (ej. YouTube/Loom) manteniendo el mismo contenedor
+      "monitor" de abajo (aspect-video, radius, borde).
+    -->
+    <div class="monitor relative mx-auto flex aspect-video max-w-2xl flex-col items-center justify-center gap-3 rounded-2xl">
+      <button
+        type="button"
+        aria-disabled="true"
+        class="flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-signal/60 text-signal-strong transition-colors hover:border-signal"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l11-7z"></path>
+        </svg>
+      </button>
+      <p class="font-mono text-xs uppercase tracking-[0.12em] text-ink-muted">Video demo — próximamente</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .monitor {
+    background: var(--ink);
+    border: 1.5px solid var(--ink-line-strong);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), var(--shadow-md);
+  }
+</style>

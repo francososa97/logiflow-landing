@@ -1,0 +1,105 @@
+---
+// Elemento firma: la línea de ruta que conecta los estados de un envío,
+// de depósito a entregado. Se dibuja sola al entrar en pantalla.
+interface Props {
+  stops: string[];
+}
+const { stops } = Astro.props;
+const gapPct = 100 / (stops.length - 1);
+---
+
+<div class="route-line" role="img" aria-label={`Recorrido: ${stops.join(' → ')}`}>
+  <svg viewBox="0 0 100 6" preserveAspectRatio="none" class="route-line__svg" aria-hidden="true">
+    <line x1="0" y1="3" x2="100" y2="3" class="route-line__track"></line>
+    <line x1="0" y1="3" x2="100" y2="3" class="route-line__draw"></line>
+    {stops.map((_, i) => (
+      <circle cx={i * gapPct} cy="3" r="2.1" class="route-line__dot" style={`animation-delay:${0.4 + i * 0.35}s`}></circle>
+    ))}
+  </svg>
+  <div class="route-line__labels">
+    {stops.map((stop) => (
+      <span class="route-line__label">{stop}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .route-line {
+    width: 100%;
+  }
+
+  .route-line__svg {
+    width: 100%;
+    height: 10px;
+    overflow: visible;
+  }
+
+  .route-line__track {
+    stroke: var(--ink-line-strong);
+    stroke-width: 1;
+  }
+
+  .route-line__draw {
+    stroke: var(--signal);
+    stroke-width: 1;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: draw-route 1.6s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .route-line__dot {
+    fill: var(--ink);
+    stroke: var(--signal);
+    stroke-width: 1.4;
+    opacity: 0;
+    animation: pop-dot 0.5s ease-out forwards;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .route-line__labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.65rem;
+  }
+
+  .route-line__label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+
+  .route-line__label:last-child {
+    color: var(--signal-strong);
+  }
+
+  @keyframes draw-route {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes pop-dot {
+    from {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .route-line__draw {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+    .route-line__dot {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>

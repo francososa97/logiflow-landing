@@ -1,0 +1,120 @@
+---
+const checkpoints = [
+  {
+    n: '01',
+    icon: '🗺️',
+    title: 'Optimización de rutas real',
+    body: 'Motor OSRM propio sobre las calles de Buenos Aires: sin costo por consulta, uso ilimitado, sin depender de la cuota de Google Maps.',
+  },
+  {
+    n: '02',
+    icon: '📱',
+    title: 'El chofer no instala nada',
+    body: 'Recibe la hoja de ruta y confirma cada entrega desde el navegador del celular, con firma y foto.',
+  },
+  {
+    n: '03',
+    icon: '🔗',
+    title: 'Link de seguimiento público',
+    body: 'El destinatario ve su pedido en vivo, como Mercado Libre o Andreani, sin instalar ninguna app.',
+  },
+  {
+    n: '04',
+    icon: '💰',
+    title: 'Liquidaciones automáticas',
+    body: 'Se generan solas por cliente y por período a partir de las entregas confirmadas.',
+  },
+  {
+    n: '05',
+    icon: '📊',
+    title: 'Panel operativo del día',
+    body: 'Alertas de GPS perdido y rutas sin completar, con historial inmutable de cada estado.',
+  },
+];
+---
+
+<section class="relative overflow-hidden bg-ink py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="max-w-xl">
+      <p class="font-mono text-xs uppercase tracking-[0.14em] text-signal-strong">De la orden a la liquidación</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-ink-text sm:text-4xl">
+        Todo el recorrido de un envío, resuelto.
+      </h2>
+      <p class="mt-4 text-[15px] leading-relaxed text-ink-muted">
+        Funciones que ya están corriendo en producción, no una lista de promesas.
+      </p>
+    </div>
+
+    <ol class="checkpoints mt-14">
+      {checkpoints.map((c) => (
+        <li class="checkpoint">
+          <div class="checkpoint__marker">
+            <span class="checkpoint__dot"></span>
+          </div>
+          <div class="checkpoint__body">
+            <span class="font-mono text-xs text-ink-muted">{c.n}</span>
+            <h3 class="mt-1 flex items-center gap-2 font-display text-lg font-semibold text-ink-text">
+              <span aria-hidden="true">{c.icon}</span>
+              {c.title}
+            </h3>
+            <p class="mt-1.5 max-w-md text-[15px] leading-relaxed text-ink-muted">{c.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .checkpoints {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .checkpoint {
+    position: relative;
+    display: flex;
+    gap: 1.25rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .checkpoint:last-child {
+    padding-bottom: 0;
+  }
+
+  .checkpoint__marker {
+    position: relative;
+    display: flex;
+    width: 1.1rem;
+    flex-shrink: 0;
+    justify-content: center;
+  }
+
+  .checkpoint__marker::before {
+    content: '';
+    position: absolute;
+    top: 1.4rem;
+    bottom: -0.9rem;
+    width: 1.5px;
+    background: var(--ink-line-strong);
+  }
+
+  .checkpoint:last-child .checkpoint__marker::before {
+    display: none;
+  }
+
+  .checkpoint__dot {
+    margin-top: 0.4rem;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 999px;
+    background: var(--ink);
+    border: 1.5px solid var(--signal);
+    z-index: 1;
+  }
+
+  .checkpoint__body {
+    padding-top: 0.15rem;
+  }
+</style>

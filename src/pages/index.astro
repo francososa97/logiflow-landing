@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import ForWhom from '../components/ForWhom.astro';
+import Features from '../components/Features.astro';
+import VideoPlaceholder from '../components/VideoPlaceholder.astro';
+import Pricing from '../components/Pricing.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'LogiFlow — Rutas optimizadas y seguimiento en vivo para tu flota';
+const description =
+  'Dejá el Excel y el WhatsApp: rutas optimizadas, tus choferes con la hoja de ruta en el celular, y tus clientes con link de seguimiento en vivo. Ya en producción en Buenos Aires.';
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <Hero />
+      <ForWhom />
+      <Features />
+      <VideoPlaceholder />
+      <Pricing />
+      <FinalCta />
+    </main>
+    <Footer />
+  </body>
+</html>

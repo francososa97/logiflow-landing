@@ -1,0 +1,15 @@
+---
+import { whatsappHref, emailHref } from '../lib/cta';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-ink-raised py-10">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 sm:flex-row sm:px-8">
+    <p class="font-display text-sm font-semibold text-ink-text">LogiFlow</p>
+    <div class="flex gap-6 font-mono text-xs text-ink-muted">
+      <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="hover:text-signal-strong">WhatsApp</a>
+      <a href={emailHref} class="hover:text-signal-strong">Email</a>
+    </div>
+    <p class="font-mono text-xs text-ink-muted">© {year} LogiFlow</p>
+  </div>
+</footer>

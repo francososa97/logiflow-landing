@@ -1,0 +1,26 @@
+---
+import CtaButtons from './CtaButtons.astro';
+---
+
+<section class="relative overflow-hidden bg-ink py-20 sm:py-28">
+  <div class="pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true">
+    <svg width="100%" height="100%" preserveAspectRatio="none">
+      <pattern id="grid-2" width="56" height="56" patternUnits="userSpaceOnUse">
+        <path d="M 56 0 L 0 0 0 56" fill="none" stroke="white" stroke-width="1"></path>
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#grid-2)"></rect>
+    </svg>
+  </div>
+
+  <div class="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
+    <h2 class="font-display text-3xl font-semibold tracking-tight text-ink-text sm:text-4xl">
+      Tu flota ya podría estar operando así.
+    </h2>
+    <p class="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-ink-muted">
+      Agendá una demo de 20 minutos y te mostramos LogiFlow funcionando con tus propias rutas.
+    </p>
+    <div class="mt-8 flex justify-center">
+      <CtaButtons variant="onink" />
+    </div>
+  </div>
+</section>
