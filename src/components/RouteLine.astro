@@ -9,13 +9,19 @@ const gapPct = 100 / (stops.length - 1);
 ---
 
 <div class="route-line" role="img" aria-label={`Recorrido: ${stops.join(' → ')}`}>
-  <svg viewBox="0 0 100 6" preserveAspectRatio="none" class="route-line__svg" aria-hidden="true">
-    <line x1="0" y1="3" x2="100" y2="3" class="route-line__track"></line>
-    <line x1="0" y1="3" x2="100" y2="3" class="route-line__draw"></line>
+  <div class="route-line__track-wrap">
+    <svg viewBox="0 0 100 1" preserveAspectRatio="none" class="route-line__svg" aria-hidden="true">
+      <line x1="0" y1="0.5" x2="100" y2="0.5" class="route-line__track"></line>
+      <line x1="0" y1="0.5" x2="100" y2="0.5" class="route-line__draw"></line>
+    </svg>
     {stops.map((_, i) => (
-      <circle cx={i * gapPct} cy="3" r="2.1" class="route-line__dot" style={`animation-delay:${0.4 + i * 0.35}s`}></circle>
+      <span
+        class="route-line__dot"
+        style={`left:${i * gapPct}%; animation-delay:${0.4 + i * 0.35}s`}
+        aria-hidden="true"
+      ></span>
     ))}
-  </svg>
+  </div>
   <div class="route-line__labels">
     {stops.map((stop) => (
       <span class="route-line__label">{stop}</span>
@@ -28,39 +34,51 @@ const gapPct = 100 / (stops.length - 1);
     width: 100%;
   }
 
+  .route-line__track-wrap {
+    position: relative;
+    height: 14px;
+  }
+
   .route-line__svg {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: 10px;
+    height: 100%;
     overflow: visible;
   }
 
   .route-line__track {
     stroke: var(--ink-line-strong);
-    stroke-width: 1;
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke;
   }
 
   .route-line__draw {
     stroke: var(--signal);
-    stroke-width: 1;
+    stroke-width: 1.5;
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
+    vector-effect: non-scaling-stroke;
     animation: draw-route 1.6s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   .route-line__dot {
-    fill: var(--ink);
-    stroke: var(--signal);
-    stroke-width: 1.4;
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 2px solid var(--signal);
     opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
     animation: pop-dot 0.5s ease-out forwards;
-    transform-box: fill-box;
-    transform-origin: center;
   }
 
   .route-line__labels {
     display: flex;
     justify-content: space-between;
-    margin-top: 0.65rem;
+    margin-top: 0.85rem;
   }
 
   .route-line__label {
@@ -84,11 +102,11 @@ const gapPct = 100 / (stops.length - 1);
   @keyframes pop-dot {
     from {
       opacity: 0;
-      transform: scale(0.3);
+      transform: translate(-50%, -50%) scale(0.3);
     }
     to {
       opacity: 1;
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 
@@ -100,6 +118,7 @@ const gapPct = 100 / (stops.length - 1);
     .route-line__dot {
       animation: none;
       opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 </style>
