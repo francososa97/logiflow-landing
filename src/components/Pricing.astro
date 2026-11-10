@@ -22,7 +22,7 @@ const plans = [
         <div class:list={['ticket relative rounded-2xl bg-white p-7', { 'ticket--featured': plan.featured }]}>
           {plan.featured && (
             <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-signal px-3.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-wide text-ink">
-              Más elegido
+              Recomendado para PyMEs
             </span>
           )}
           <span class="notch notch--left" aria-hidden="true"></span>
@@ -48,7 +48,7 @@ const plans = [
               plan.featured ? 'bg-signal text-ink' : 'bg-paper-raised text-paper-text',
             ]}
           >
-            Agendar demo
+            Pedir piloto gratis
           </a>
         </div>
       ))}
@@ -56,7 +56,8 @@ const plans = [
 
     <div class="mt-10 flex flex-col items-center gap-1 rounded-2xl border border-dashed px-6 py-6 text-center" style="border-color: var(--amber); background: var(--amber-soft);">
       <p class="font-display text-base font-semibold text-paper-text">Piloto de 30 días gratis, con onboarding incluido</p>
-      <p class="text-sm text-paper-muted">A cambio de tu feedback. Sin compromiso.</p>
+      <p class="text-sm text-paper-muted">A cambio de tu feedback. Sin compromiso. Precios en dólares, por mes.</p>
+      <!-- TODO(Franco): confirmar si los precios incluyen IVA, cómo se cobra (USD / pesos al tipo de cambio) y si hay descuento anual. -->
     </div>
   </div>
 </section>

@@ -1,7 +1,14 @@
 ---
 import { whatsappHref } from '../lib/cta';
+
+const links = [
+  { href: '#como-funciona', label: 'Cómo funciona' },
+  { href: '#precios', label: 'Precios' },
+  { href: '#preguntas', label: 'Preguntas' },
+];
 ---
 
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
 <header class="sticky top-0 z-50 border-b border-white/10 bg-ink/85 backdrop-blur-md">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
     <a href="#top" class="flex items-center gap-2 font-display text-lg font-semibold text-ink-text">
@@ -11,13 +18,18 @@ import { whatsappHref } from '../lib/cta';
       </span>
       LogiFlow
     </a>
+    <nav aria-label="Principal" class="hidden items-center gap-7 md:flex">
+      {links.map((l) => (
+        <a href={l.href} class="text-sm font-medium text-ink-muted transition-colors duration-200 hover:text-ink-text">{l.label}</a>
+      ))}
+    </nav>
     <a
       href={whatsappHref}
       target="_blank"
       rel="noopener noreferrer"
       class="rounded-full bg-signal px-4 py-2 font-display text-sm font-semibold text-ink transition-transform duration-200 hover:-translate-y-0.5 hover:bg-signal-strong sm:px-5"
     >
-      Agendar demo
+      Pedir demo
     </a>
   </div>
 </header>

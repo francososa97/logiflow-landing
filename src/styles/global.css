@@ -2,7 +2,6 @@
    Tipografía — Space Grotesk (display) + Manrope (texto) + JetBrains Mono
    (datos: precios, cupos de choferes, coordenadas)
 --------------------------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
 @import 'tailwindcss';
 
 /* ---------------------------------------------------------------------------
@@ -24,6 +23,7 @@
 
   --signal: #0fb88c;
   --signal-strong: #4edbb5;
+  --signal-deep: #07705a; /* texto verde sobre fondo claro (contraste >= 4.5:1) */
   --signal-soft: rgba(15, 184, 140, 0.14);
 
   --amber: #e8a33d;
@@ -50,6 +50,7 @@
   --color-paper-muted: var(--paper-muted);
 
   --color-signal: var(--signal);
+  --color-signal-deep: var(--signal-deep);
   --color-signal-strong: var(--signal-strong);
   --color-amber: var(--amber);
   --color-amber-strong: var(--amber-strong);
@@ -99,4 +100,32 @@ body {
   outline: 2px solid var(--signal);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  border-radius: 9999px;
+  background: var(--signal);
+  color: var(--ink);
+  padding: 0.6rem 1.1rem;
+  font-weight: 700;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
 }
