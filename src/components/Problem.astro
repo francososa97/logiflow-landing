@@ -1,0 +1,49 @@
+---
+// Problema -> solución, en el idioma del cliente. Los dolores salen del ICP del plan comercial
+// (PLAN-marketing-directo-B2B.md §1) y cada respuesta corresponde a una función ya en producción.
+const rows = [
+  {
+    pain: 'Armás las rutas a mano cada mañana, con Excel y Google Maps.',
+    fix: 'Subís los envíos y LogiFlow calcula la ruta más corta sobre las calles de Buenos Aires.',
+  },
+  {
+    pain: 'No sabés dónde está cada chofer hasta que lo llamás.',
+    fix: 'Panel del día con el estado de cada ruta y alertas de GPS perdido o ruta sin completar.',
+  },
+  {
+    pain: 'Los clientes preguntan "¿dónde está mi pedido?" todo el día por WhatsApp.',
+    fix: 'Cada envío tiene un link público de seguimiento. El cliente lo mira solo, sin app ni login.',
+  },
+  {
+    pain: 'Hay entregas fallidas y no queda registro ni prueba de entrega.',
+    fix: 'El chofer confirma cada entrega con firma y foto, y el historial de estados no se puede borrar.',
+  },
+  {
+    pain: 'A fin de mes liquidás cliente por cliente, a mano.',
+    fix: 'Las liquidaciones se generan por cliente y por período a partir de las entregas confirmadas.',
+  },
+];
+---
+
+<section class="bg-paper py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <h2 class="max-w-2xl font-display text-3xl font-semibold tracking-tight text-paper-text sm:text-4xl">
+      Lo que hoy te lleva horas y llamadas, resuelto en un solo lugar.
+    </h2>
+
+    <ul class="mt-12 grid gap-4">
+      {rows.map((r) => (
+        <li class="grid gap-3 rounded-2xl bg-white/60 p-5 sm:grid-cols-2 sm:gap-8 sm:p-6" style="border: 1.5px solid var(--paper-line);">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-paper-muted">Hoy</p>
+            <p class="mt-1 text-[15px] leading-relaxed text-paper-text">{r.pain}</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-signal-deep">Con LogiFlow</p>
+            <p class="mt-1 text-[15px] leading-relaxed text-paper-text">{r.fix}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

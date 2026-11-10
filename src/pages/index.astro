@@ -2,17 +2,52 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import Problem from '../components/Problem.astro';
+import HowItWorks from '../components/HowItWorks.astro';
 import ForWhom from '../components/ForWhom.astro';
 import Features from '../components/Features.astro';
 import ProductScreens from '../components/ProductScreens.astro';
 import VideoPlaceholder from '../components/VideoPlaceholder.astro';
 import Pricing from '../components/Pricing.astro';
+import Faq from '../components/Faq.astro';
 import FinalCta from '../components/FinalCta.astro';
 import Footer from '../components/Footer.astro';
+import { faqs } from '../lib/faq';
 
 const title = 'LogiFlow — Rutas optimizadas y seguimiento en vivo para tu flota';
 const description =
-  'Dejá el Excel y el WhatsApp: rutas optimizadas, tus choferes con la hoja de ruta en el celular, y tus clientes con link de seguimiento en vivo. Ya en producción en Buenos Aires.';
+  'Dejá el Excel y el WhatsApp: rutas optimizadas, tus choferes con la hoja de ruta en el celular, y tus clientes con link de seguimiento en vivo. Piloto de 30 días gratis.';
+// TODO(Franco): cuando se compre getlogiflow.com, cambiar `site` en astro.config.mjs (canonical, og:url, og:image y schema se derivan de ahí).
+const siteUrl = (Astro.site ?? new URL('https://logiflow-landing-sepia.vercel.app')).toString();
+const ogImage = new URL('/screens/dashboard.png', siteUrl).toString();
+
+// Precios = los del plan comercial y de la sección Precios. No hay reviews ni ratings: no se declaran.
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'LogiFlow',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description,
+    url: siteUrl,
+    inLanguage: 'es-AR',
+    offers: [
+      { '@type': 'Offer', name: 'Inicial (hasta 3 choferes)', price: '49', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'PyME (hasta 10 choferes)', price: '129', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Flota (hasta 30 choferes)', price: '299', priceCurrency: 'USD' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
 ---
 
 <!doctype html>
@@ -20,25 +55,51 @@ const description =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10151d" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={siteUrl} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
 
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="LogiFlow" />
+    <meta property="og:url" content={siteUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Dashboard de LogiFlow con envíos, choferes y estado de entregas del día" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
     <Nav />
-    <main>
+    <main id="contenido">
       <Hero />
+      <Problem />
+      <HowItWorks />
       <ForWhom />
       <Features />
       <ProductScreens />
       <VideoPlaceholder />
+      <!--
+        TODO(Franco): prueba social. Hoy no hay casos ni testimonios reales publicados, así que no se muestra ninguno.
+        Cuando el primer piloto acepte, agregar una sección con: nombre de la empresa, cita textual aprobada por ellos,
+        y un resultado medido (ej. horas de armado de rutas antes/después). Logo solo con su permiso.
+      -->
       <Pricing />
+      <Faq />
       <FinalCta />
     </main>
     <Footer />

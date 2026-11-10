@@ -1,0 +1,35 @@
+---
+// Los 3 pasos describen el flujo real del producto (carga masiva por Excel hasta 500 paquetes,
+// optimización OSRM, chofer desde el navegador, link público). Ver plan comercial §2 y §6.
+const steps = [
+  {
+    title: 'Cargás los envíos',
+    body: 'Subís tu planilla de Excel (hasta 500 paquetes por carga) o los cargás uno a uno. Es el mismo Excel que ya usás.',
+  },
+  {
+    title: 'Armás la ruta y se la asignás al chofer',
+    body: 'Un click calcula el recorrido más corto. El chofer recibe la hoja de ruta en el navegador del celular, sin instalar nada.',
+  },
+  {
+    title: 'Entrega confirmada, cliente informado',
+    body: 'El chofer confirma con firma y foto. Tu cliente sigue el pedido por un link y vos ves todo el día en el panel.',
+  },
+];
+---
+
+<section id="como-funciona" class="bg-ink py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <h2 class="max-w-xl font-display text-3xl font-semibold tracking-tight text-ink-text sm:text-4xl">
+      Cómo funciona, en tres pasos.
+    </h2>
+    <ol class="mt-12 grid gap-6 sm:grid-cols-3">
+      {steps.map((s, i) => (
+        <li class="rounded-2xl p-6" style="background: var(--ink-raised); border: 1.5px solid var(--ink-line);">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-signal font-mono text-sm font-semibold text-ink" aria-hidden="true">{i + 1}</span>
+          <h3 class="mt-4 font-display text-lg font-semibold text-ink-text">{s.title}</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-ink-muted">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

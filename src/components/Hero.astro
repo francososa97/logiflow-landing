@@ -16,7 +16,7 @@ import RouteLine from './RouteLine.astro';
 
   <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
     <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-ink-line-strong px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-signal-strong">
-      Última milla · Ya en producción en Buenos Aires
+      Para couriers y distribuidoras · Ya en producción en Buenos Aires
     </p>
 
     <h1 class="max-w-3xl font-display text-[2.15rem] font-semibold leading-[1.12] tracking-tight text-ink-text sm:text-5xl md:text-[3.4rem]">
@@ -24,12 +24,16 @@ import RouteLine from './RouteLine.astro';
     </h1>
 
     <p class="mt-6 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
-      LogiFlow es el sistema operativo de tu flota: arma la ruta más corta, se la manda al chofer sin instalar nada, y le da a cada cliente un link para ver dónde está su pedido.
+      LogiFlow arma la ruta más corta, se la manda al chofer sin que instale nada, y le da a cada cliente un link para ver dónde está su pedido.
     </p>
 
-    <div class="mt-9">
-      <CtaButtons variant="onink" />
+    <div class="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+      <CtaButtons variant="onink" showEmail={false} label="Pedir demo y piloto gratis" />
+      <a href="#como-funciona" class="font-display text-[15px] font-semibold text-ink-text underline decoration-signal underline-offset-4 hover:text-signal-strong">
+        Ver cómo funciona
+      </a>
     </div>
+    <p class="mt-4 text-sm text-ink-muted">Demo de 20 minutos con tus propias rutas. Piloto de 30 días gratis, sin compromiso.</p>
 
     <div class="mt-24 max-w-2xl sm:mt-28">
       <RouteLine stops={['Depósito', 'Ruta optimizada', 'Chofer en camino', 'Entregado']} />
