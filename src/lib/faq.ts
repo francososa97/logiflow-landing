@@ -22,11 +22,11 @@ export const faqs = [
     a: 'No. Cada empresa trabaja en su propio espacio de datos, separado del resto.',
   },
   {
-    q: '¿Cómo es el piloto de 30 días?',
-    a: 'Es gratis e incluye onboarding asistido: trabajamos con tus datos reales desde el primer día y hacemos seguimiento semanal. A cambio te pedimos tu feedback.',
+    q: '¿Cómo es la prueba de 7 días?',
+    a: 'Es gratis e incluye onboarding asistido: el primer día cargamos tus datos reales y armamos juntos la primera ruta. Si necesitás más tiempo para evaluar, lo hablamos.',
   },
   {
-    q: '¿Qué pasa cuando termina el piloto?',
+    q: '¿Qué pasa cuando termina la prueba?',
     a: 'Elegís el plan que se ajuste a tu flota o no seguís. No hay compromiso de permanencia.',
   },
   {

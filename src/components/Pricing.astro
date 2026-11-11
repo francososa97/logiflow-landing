@@ -2,9 +2,9 @@
 import { whatsappHref } from '../lib/cta';
 
 const plans = [
-  { name: 'Inicial', drivers: 'hasta 3 choferes', price: '49', featured: false },
-  { name: 'PyME', drivers: 'hasta 10 choferes', price: '129', featured: true },
-  { name: 'Flota', drivers: 'hasta 30 choferes', price: '299', featured: false },
+  { name: 'Inicial', drivers: 'hasta 3 choferes', price: '45', listPrice: '50', featured: false },
+  { name: 'PyME', drivers: 'hasta 10 choferes', price: '135', listPrice: '150', featured: true },
+  { name: 'Flota', drivers: 'hasta 30 choferes', price: '270', listPrice: '300', featured: false },
 ];
 ---
 
@@ -37,6 +37,9 @@ const plans = [
               <span class="text-4xl font-semibold">{plan.price}</span>
               <span class="text-sm text-paper-muted">/mes</span>
             </p>
+            <p class="mt-1 font-mono text-xs text-paper-muted">
+              Lanzamiento -10% · lista <span class="line-through">USD {plan.listPrice}</span>
+            </p>
           </div>
 
           <a
@@ -55,9 +58,11 @@ const plans = [
     </div>
 
     <div class="mt-10 flex flex-col items-center gap-1 rounded-2xl border border-dashed px-6 py-6 text-center" style="border-color: var(--amber); background: var(--amber-soft);">
-      <p class="font-display text-base font-semibold text-paper-text">Piloto de 30 días gratis, con onboarding incluido</p>
-      <p class="text-sm text-paper-muted">A cambio de tu feedback. Sin compromiso. Precios en dólares, por mes.</p>
-      <!-- TODO(Franco): confirmar si los precios incluyen IVA, cómo se cobra (USD / pesos al tipo de cambio) y si hay descuento anual. -->
+      <p class="font-display text-base font-semibold text-paper-text">Prueba de 7 días gratis, con onboarding incluido</p>
+      <p class="text-sm text-paper-muted">Sin compromiso. Precios en dólares, por mes. Se cobra en pesos al tipo de cambio del día de alta.</p>
+      <!-- TODO(Franco): confirmar si los precios incluyen IVA y si hay descuento anual. -->
+      <!-- Pendiente: cuando se publiquen los planes de lanzamiento, el descuento del 10% aplica a los primeros clientes. -->
+
     </div>
   </div>
 </section>
